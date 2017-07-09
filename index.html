@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>Talking 404 page with mespeak</title>
+
+	<!-- Styles -->
+  	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,Droid+Sans:400">
+  	<link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/7.0.0/normalize.css">
+
+    <style>
+        body {
+            background-color: #1C285E;
+        }
+
+        .svg {
+            width: 488px;
+            height: 492px;
+            z-index: 1;
+        }
+
+        .background {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .title {
+            display: block;
+            margin: 0 0 10px;
+            padding: 0 0 10px;
+            position: relative;
+            font: 14px/1 "Droid Sans", sans-serif;
+            letter-spacing: 0.25em;
+            text-transform: uppercase
+        }
+        .title:after {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 12px;
+            height: 3px;
+
+            background-color: #fff;
+            content: '';
+        }
+
+        .content {
+            margin: -77px 0 0 -210px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 420px;
+            height: 154px;
+
+            z-index: 2;
+
+            color: #fff;
+            font: 50px/1.2 "Playfair Display", serif;
+        }
+    </style>
+
+    <!-- Scripts -->
+    <script type='text/javascript' src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+    <script type='text/javascript' src='./mespeak.full.js'></script>
+
+    <script type='text/javascript'>
+        $(function(){
+
+            // Load meSpeak language and voice files
+            meSpeak.loadConfig('./mespeak_config.json');
+            meSpeak.loadVoice('./mespeak_en.json');
+
+            // Use meSpeak options to configure the voice
+            // Check http://www.masswerk.at/mespeak for full options list
+            meSpeakOptions = {
+                pitch: 100,
+                wordgap: 5,
+                variant: 'm7',
+                linebreak: 50,
+                ssml: true
+            }
+
+            // Get the text contained in our hidden div and pass it to meSpeak
+            var text = $('.speech').html();
+            meSpeak.speak(text, meSpeakOptions);
+
+        });
+    </script>
+    </head>
+    <body>
+    <div class="content">
+        <h1 class="title">Error 404</h1>
+        <div class="text">
+            ooops, something
+            went wrong
+        </div>
+    </div>
+
+    <div class="background">
+        <div class="svg">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 896 984" enable-background="new 0 0 896 984">
+              <g enable-background="new">
+                <path fill="#1A1A4D" d="M861.479 694.104l.408 128.377-267.135 137.128-.412-128.379"/>
+                <path fill="#121235" d="M594.752 959.609L34.522 670.144l-.409-128.377L594.34 831.23"/>
+                <path fill="#212164" d="M594.34 831.23L34.113 541.767 301.25 404.638l560.229 289.466"/>
+              </g>
+              <g enable-background="new">
+                <path fill="#212163" d="M578.893 465.49l-122.639-71.27 47.908-27.661 122.641 71.272"/>
+                <path fill="#1D1D58" d="M497.908 692.111L375.269 620.84l-.297-104.722 122.639 71.27"/>
+                <path fill="#C30" d="M391.685 573.576l-122.641-71.271 105.715-61.035 122.639 71.27"/>
+                <path fill="#1D1D58" d="M329.946 684.189l-122.64-71.269-.237-83.579 122.641 71.271"/>
+                <path fill="#F30" d="M497.398 512.54l-122.639-71.27-.594-209.629 122.64 71.272"/>
+                <path fill="#212164" d="M329.71 600.612l-122.641-71.271 154.855-385.256 122.638 71.271"/>
+                <path fill="#313193" d="M578.893 465.49l47.91-27.66.213 74.847-47.91 27.659.297 104.722-81.494 47.053-.297-104.724-167.665 96.802-.236-83.577 154.853-385.256 93.471-53.964.858 304.098zm-81.495 47.05l-.594-209.627-105.12 270.664 105.714-61.037"/>
+                <path fill="#212163" d="M484.562 215.356l-122.638-71.271 93.467-53.964 122.642 71.271"/>
+              </g>
+              <path fill="#FFF" d="M469 25h2v128h-2z"/>
+              <path fill="#F30" d="M471 24.391v46.848l45.176-23.425"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Hidden element containing our speech -->
+    <div class="speech" style="display: none;">
+        Ooops, something went wrong.
+        <break time="500ms"/>
+        Shit, you are lost!
+        How can you be lost on the web nowaday?
+        <break time="1s"/>
+        Wait!?
+        Is our site screwed up?
+        <break time="500ms"/>
+        No.
+        Of course not.
+        We do not do screwed up things.
+        You must be wrong.
+    </div>
+    </body>
+    </html>

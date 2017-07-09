@@ -1,5 +1,5 @@
 # Talking404
-A talking 404 page using mespeak JS
+A talking 404 page using mespeak JS (web audio API)
 
 If you want to create a Stephen Hawking-alike talking 404 page, then this is your time. With the mespeak JS (heavy 5MB!) library it's easy to achieve through SSML (Speech Synthesis Markup Language).
 
